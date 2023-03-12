@@ -1,5 +1,5 @@
 import { useLocalStorage } from '@mantine/hooks';
-import { ColorScheme, ColorSchemeProvider, MantineProvider, Text } from '@mantine/core';
+import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import { Home } from './pages/home';
 import { ActionToggle } from './toggleTheme';
 import { About } from './pages/about';
