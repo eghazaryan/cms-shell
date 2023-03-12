@@ -1,7 +1,6 @@
-import { Text, UnstyledButton, Tooltip } from '@mantine/core';
-import { IconChevronRight } from '@tabler/icons-react';
-import React from 'react';
+import { useState } from 'react';
 import { Navigation } from '../../types';
+import { NestedLinks } from './NestedLinks';
 import useStyles from './NavBar.styles';
 
 interface NavBarProps {
@@ -10,29 +9,11 @@ interface NavBarProps {
 
 export function NavBar({ data }: NavBarProps) {
   const { classes } = useStyles();
+  const [active, setActive] = useState('');
 
-  const navLink = data.map((link, index) => (
-    <UnstyledButton key={index} className={classes.navLink}>
-      {link.icon}
-      <Tooltip label={link.purpose} multiline>
-        <Text ml={12}> {link.label}</Text>
-      </Tooltip>
-
-      <IconChevronRight stroke={1.4} size={18} className={classes.iconRight} />
-    </UnstyledButton>
+  const links = data.map((item, index) => (
+    <NestedLinks data={item} key={item.label} index={index} setActive={setActive} active={active} />
   ));
 
-  return (
-    <div className={classes.root}>
-      <div className={classes.navLinks}> {navLink} </div>
-    </div>
-  );
+  return <div className={classes.root}>{links}</div>;
 }
-
-/*
-
-  <Tooltip label="Tooltip">
-      <Button variant="outline">Button with tooltip</Button>
-    </Tooltip>
-
-*/

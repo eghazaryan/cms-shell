@@ -1,5 +1,6 @@
-import { Avatar, Button, Menu, Text, UnstyledButton, useMantineTheme } from '@mantine/core';
+import { Avatar, Badge, Button, Group, Menu, Text, UnstyledButton } from '@mantine/core';
 import { IconBell } from '@tabler/icons-react';
+import { Fragment } from 'react';
 import { Notification } from '../../types';
 import { messages } from './message';
 import useStyles from './Notifications.styles';
@@ -10,15 +11,10 @@ interface NotificationsProps {
 
 export function Notifications({ data }: NotificationsProps) {
   const { classes } = useStyles();
-  const theme = useMantineTheme();
 
   const items = data.map((item) => (
-    <>
-      <Menu.Item
-        className={classes.item}
-        key={item.id}
-        sx={{ background: item.isActive ? theme.colors.gray[2] : 'unset' }}
-      >
+    <Fragment key={item.id}>
+      <Menu.Item className={classes.item} key={item.id}>
         <Avatar src={item.user_data.avatar} mr={10} radius="xl" />
         <div>
           <Text>
@@ -29,10 +25,9 @@ export function Notifications({ data }: NotificationsProps) {
             <Text className={classes.comment}>{item.action_data.comment}</Text>
           )}
         </div>
-        {item.isActive && <Text className={classes.status} />}
       </Menu.Item>
       <Menu.Divider />
-    </>
+    </Fragment>
   ));
 
   return (
@@ -41,14 +36,16 @@ export function Notifications({ data }: NotificationsProps) {
 
       <Menu shadow="md" width={500}>
         <Menu.Target>
-          <UnstyledButton>
+          <UnstyledButton className={classes.bell}>
             <IconBell size={27} stroke={1.4} />
           </UnstyledButton>
         </Menu.Target>
 
         <Menu.Dropdown>
           <Menu.Label className={classes.label}>
-            Notifications {data.length}
+            <Group>
+              Notifications <Badge size="lg">{data.length}</Badge>
+            </Group>
             <UnstyledButton className={classes.button}>Mark all as read</UnstyledButton>
           </Menu.Label>
 

@@ -1,14 +1,30 @@
 import { createStyles } from '@mantine/core';
+import {
+  LIGHT_MAIN_FONT_COLOR,
+  DARK_MAIN_FONT_COLOR,
+  LIGHT_SMALL_FONT_COLOR,
+  DARK_SMALL_FONT_COLOR,
+} from '../NavBar/NavBar.styles';
 
 export default createStyles((theme) => ({
   root: {
     paddingTop: 10,
-    paddingRight: 10,
+    paddingRight: 30,
     position: 'relative',
+  },
+
+  bell: {
+    position: 'relative',
+    color: theme.colorScheme === 'light' ? LIGHT_SMALL_FONT_COLOR : DARK_SMALL_FONT_COLOR,
+
+    '&:hover': {
+      color: theme.colorScheme === 'light' ? LIGHT_MAIN_FONT_COLOR : DARK_MAIN_FONT_COLOR,
+    },
   },
 
   label: {
     fontSize: 18,
+    height: 50,
     color: 'black',
     paddingLeft: 20,
     display: 'flex',
@@ -19,12 +35,12 @@ export default createStyles((theme) => ({
   count: {
     background: theme.colors.blue[4],
     position: 'absolute',
-    right: 13,
+    right: 34,
     top: 11,
     borderRadius: '50px',
     textAlign: 'center',
-    width: 10,
-    height: 10,
+    width: 8,
+    height: 8,
     fontSize: 12,
   },
 

@@ -16,7 +16,11 @@ export interface Notification {
   action: 'join' | 'new-comment';
   action_data: ActionData;
   user_data: Omit<UserData, 'role'>;
-  isActive: boolean;
+}
+
+export interface BranchData {
+  name: string;
+  id: string;
 }
 
 export interface ProjectData {
@@ -38,6 +42,8 @@ export interface ContentSchema {
 export interface Navigation {
   label:
     | 'Dashboard'
+    | 'Schemas'
+    | 'Content'
     | 'Content schema editor'
     | 'Content editor'
     | 'Media'
@@ -49,8 +55,10 @@ export interface Navigation {
     | 'Analytics'
     | 'Help center'
     | 'Actions'
-    | 'Scheduler';
+    | 'Scheduler'
+    | 'Settings';
   purpose: string;
   // icon: string;
   icon: JSX.Element;
+  links?: Navigation[];
 }
