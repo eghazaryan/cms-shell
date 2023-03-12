@@ -22,7 +22,6 @@ export function NestedLinks({ data, index, active, setActive }: NestedLinksProps
   const ChevronIcon = theme.dir === 'ltr' ? IconChevronRight : IconChevronLeft;
 
   const linkColor = getColor(index);
-
   const items = data.links?.map((link) => (
     <UnstyledButton className={classes.nestedLinks}>
       {cloneElement(link.icon, {
