@@ -2,9 +2,12 @@
   "name": "mantine-vite-template",
   "private": true,
   "version": "0.0.0",
+  "homepage": "http://eghazaryan.github.io/cms-shell",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src",
